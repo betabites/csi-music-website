@@ -1,4 +1,4 @@
-track_id,Filename,title,duration,size
+﻿track_id,Filename,title,duration,size
 3,Sarah Victoria.mp3,Sarah Victoria,114,3692
 4,Waiting For You.mp3,Waiting For You,204,6488
 18,Mary.mp3,Mary,233,9109
@@ -9,8 +9,8 @@ track_id,Filename,title,duration,size
 81,C'est La Mort.mp3,Zombie,252,9874
 33,Brazilian Stomp.mp3,Everybody's Fool,197,7893
 83,When You Come Back Home.mp3,When You Come Back Home,217,3408
-5,Simple Love [#].mp3,Simple Love [#],284,4444
-6,You're Just a Country Boy [#].mp3,You're Just a Country Boy [#],208,3258
+5,Simple Love [#].mp3,Simple Love,284,4444
+6,You're Just a Country Boy [#].mp3,You're Just a Country Boy,208,3258
 69,One Slip.mp3,The Horses,292,9158
 36,Everybody's Fool.mp3,Steal Your Heart Away,213,5011
 24,One Golden Rule.mp3,One Golden Rule,270,10569
@@ -34,7 +34,7 @@ track_id,Filename,title,duration,size
 35,River.mp3,A Commotion,233,6904
 10,Alice's Restaurant Massacree.mp3,Alice's Restaurant Massacree,1111,34731
 11,Hard Travelin' Hootenanny.mp3,Hard Travelin' Hootenanny,210,6588
-12,Til We Outnumber 'Em (This Land Is You Land).mp3,Til We Outnumber 'Em (This Land Is You Land),157,4929
+12,Til We Outnumber 'Em (This Land Is You Land).mp3,Til We Outnumber 'Em - This Land Is You Land,157,4929
 20,"Don't Think Twice, It's All Right.mp3","Don't Think Twice, It's All Right",301,11766
 21,Slow Train.mp3,The Times They Are A-Changin',328,12854
 61,When Girls Collide.mp3,Hopeless Wanderer,307,10236
@@ -61,7 +61,7 @@ track_id,Filename,title,duration,size
 1,2-30.mp3,Listen,60,1446
 2,The Traveller.mp3,The Traveller,206,5677
 65,Hineraukatauri (Goddess of Music).mp3,Alligator Sky,195,6176
-91,Turn! Turn! Turn! (To Everything There Is A Season).mp3,Turn! Turn! Turn! (To Everything There Is A Season),160,5025
+91,Turn! Turn! Turn! (To Everything There Is A Season).mp3,Turn! Turn! Turn! - To Everything There Is A Season,160,5025
 27,Slice of Heaven.mp3,Slice of Heaven,277,4347
 79,Boogie On Reggae Woman.mp3,Tell me,135,2884
 59,I'll Be Long Gone.mp3,Now There's That Fear Again,236,5550
@@ -76,11 +76,11 @@ track_id,Filename,title,duration,size
 57,All The Young Dudes.mp3,Bring Me Home,365,11428
 46,Great Southern Land.mp3,Shower the People,241,9426
 47,Radioactive.mp3,Sweet Baby James,174,6818
-54,Ashes By Now.mp3,Free Bird Live [Fox Theater],816,25506
+54,Ashes By Now.mp3,Free Bird Live - Fox Theater,816,25506
 43,French Letter.mp3,Great Southern Land,319,12468
 45,Slice of Heaven.mp3,Stay,204,7990
-51,Aqualung.mp3,Unchain My Heart [90's Version],306,11972
-56,We can let it happen tonight.mp3,All The Young Dudes (David Bowie),232,9081
+51,Aqualung.mp3,Unchain My Heart - 90's Version,306,11972
+56,We can let it happen tonight.mp3,All The Young Dudes - David Bowie,232,9081
 87,Fields of Gold.mp3,Fields of Gold,214,8382
 37,American Heart.mp3,If I Ever Leave This World Alive,201,4722
 92,Maggie.mp3,Maggie,287,7862
@@ -88,8 +88,8 @@ track_id,Filename,title,duration,size
 14,Got The Love - 2009.mp3,Got The Love,227,8874
 15,How Sweet Can You Get - 2009.mp3,How Sweet Can You Get,238,9330
 80,Tell me.mp3,C'est La Mort,149,4094
-7,Big Jet Plane (Radio Edit).mp3,Big Jet Plane (Radio Edit),223,8776
+7,Big Jet Plane (Radio Edit).mp3,Big Jet Plane - Radio Edit,223,8776
 62,Hopeless Wanderer.mp3,Like Someone In Love,142,3368
 90,Fridays Child.mp3,Friday's Child,243,7608
 39,Steal Your Heart Away.mp3,Hallelujah,211,8263
-64,Turn! Turn! Turn!.mp3,Hineraukatauri (Goddess of Music),294,9222
+64,Turn! Turn! Turn!.mp3,Hineraukatauri - Goddess of Music,294,9222
