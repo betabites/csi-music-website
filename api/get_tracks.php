@@ -7,3 +7,11 @@
 // name - The name of the track
 
 // Results will be returned in array form, as multiple tracks may fit the filter.
+require "connect.php";
+
+$rows = [];
+foreach ($conn->query("SELECT * FROM `tracks` ") as $row) {
+    array_push($rows, $row);
+}
+
+echo json_encode($rows);
