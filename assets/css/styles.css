@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 1fr 100px;
+}
+
+#small_menu {
+    background-color: black;
+}
+
+#large_menu {
+    display: none;
+}
+
+#player {
+    grid-column: 1/3;
+    background-color: lightgray;
+}
+
+#content {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    padding: 20px;
+}
+
+.page_header {
+    height: 500px;
+    max-height: 50vh;
+    background-color: gray;
+    padding: 50px;
+}
+
+.page_header_albumn_cover {
+    display: inline-block;
+    border-radius: 100%;
+    background-color: white;
+    height: 400px;
+    width: 400px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.sideways_slider {
+    height: 196px;
+    display: grid;
+    grid-template-columns: 1fr 150px;
+}
+
+.sideways_slider_content {
+    overflow: hidden;
+    height: 196px;
+}
+
+.sideways_slider_item {
+    display: inline-block;
+    margin-right: 10px;
+    width: 150px;
+    text-align: center;
+}
+
+.sideways_slider_icon {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+    background-color: red;
+}
+
+.sideways_slider_more > .sideways_slider_icon {
+    background-color: gray;
+    color: white;
+    font-size: 100%;
+}
+
+.playlists_cards_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+@media only screen and (max-width: 1150px) {
+    .playlists_cards_grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    .playlists_cards_grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.playlist_card {
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 150px 1fr 1fr;
+}
+
+.playlist_card_icon {
+    border-radius: 100%;
+    background-color: black;
+    width: 150px;
+    height: 150px;
+}
+
+.playlist_text {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    padding-top: 45px;
+    padding-left: 10px;
+}
+
+.play_track_button {
+    width: 100%;
+    height: 100%;
+    /* Invert all colours in this icon */
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s;
+    border-radius: 100%;
+
+    /* Since all the colours are inverted, the background colour must be set to white, to appear black */
+    background-color: rgba(255,255,255,0.75);
+}
+
+*.play_track_button:hover {
+    opacity: 1;
+}
+
+.page_header > * {
+    display: inline-block;
+}
