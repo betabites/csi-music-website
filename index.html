@@ -10,48 +10,48 @@
 
 <div id="wrapper">
     <div id="small_menu" class="menu">
-        <div class="small_menuitem" style="background-color: black; color: white;">
+        <div class="small_menuitem" title="Show Menu" style="background-color: black; color: white;" onclick="document.getElementById('large_menu_frame').style.display = 'grid'">
             <i class="fas fa-bars"></i>
         </div>
-        <div class="small_menuitem">
+        <div class="small_menuitem" title="Home">
             <i class="fas fa-home"></i>
         </div>
-
         <div class="seperator"></div>
-
-        <div class="small_menuitem">
+        <div class="small_menuitem" title="Search">
             <i class="fas fa-search"></i>
         </div>
-
         <div class="seperator"></div>
-
-        <div class="small_menuitem">
+        <div class="small_menuitem" title="My Account">
             <i class="fas fa-user-circle"></i>
         </div>
     </div>
 
     <div id="large_menu_frame">
         <div id="large_menu" class="menu">
-            <div class="small_menuitem" style="background-color: black; color: white;">
+            <div class="small_menuitem" style="background-color: black; color: white;" onclick="document.getElementById('large_menu_frame').style.display = 'none'">
                 <i class="fas fa-bars"></i>
+                <div id="logo_section"><img src="assets/icons/icon.svg"> DOTTY</div>
             </div>
             <div class="small_menuitem">
                 <i class="fas fa-home"></i>
+                Home
             </div>
 
             <div class="seperator"></div>
 
             <div class="small_menuitem">
                 <i class="fas fa-search"></i>
+                Search
             </div>
 
             <div class="seperator"></div>
 
             <div class="small_menuitem">
                 <i class="fas fa-user-circle"></i>
+                My Account
             </div>
         </div>
-        <div id="large_menu_darkener">
+        <div id="large_menu_darkener" onclick="document.getElementById('large_menu_frame').style.display = 'none'">
         </div>
     </div>
 

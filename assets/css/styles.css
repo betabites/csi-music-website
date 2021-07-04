@@ -58,8 +58,15 @@ h1, h2, h3 {
 
 .small_menuitem {
     max-width: 100%;
-    padding: 20px 10px;
+    padding: 20px 16px;
     text-align: center;
+    cursor: pointer;
+    transition: color 1s;
+    font-family: 'Staatliches', cursive;
+}
+
+.small_menuitem:hover {
+    color: #00FF00;
 }
 
 #large_menu > .small_menuitem {
@@ -219,4 +226,41 @@ h1, h2, h3 {
     background-color: #000;
     margin-top: -8px;
     margin-right: 10px;
+}
+#logo_section {
+    display: inline-block;
+    margin-bottom: -20px;
+    margin-top: -8px;
+    margin-left: 10px;
+    height: 30px;
+    font-size: 30px;
+}
+
+#logo_section > img {
+    display: inline-block;
+    height: 100%;
+    margin-bottom: -5px;
+}
+
+.play_animate {
+    /* Applies a slight 'wiggling' animation */
+    animation: play_animate 0.5s infinite;
+}
+
+@keyframes play_animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
