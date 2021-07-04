@@ -14,11 +14,49 @@ body {
 }
 
 #small_menu {
-    background-color: black;
+    background-color: white;
+    border-right: solid 1px;
+}
+
+#large_menu_frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    display: none;
+    grid-template-columns: 300px 1fr;
 }
 
 #large_menu {
-    display: none;
+    background-color: white;
+}
+
+#large_menu_darkener {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.menu {
+    text-align: center;
+    line-height: 0;
+}
+
+.menu > .seperator {
+    background-color: #ff00ff;
+    margin: 0;
+    width: calc(100% - 25px);
+    display: inline-block;
+    height: 1px;
+}
+
+.small_menuitem {
+    max-width: 100%;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+#large_menu > .small_menuitem {
+    text-align: left;
 }
 
 #player {
@@ -43,16 +81,22 @@ body {
     max-height: 50vh;
     background-color: gray;
     padding: 50px;
+    background-image: url("../images/background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    color: white;
 }
 
 .page_header_albumn_cover {
     display: inline-block;
     border-radius: 100%;
     background-color: white;
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
     margin-bottom: 10px;
     float: left;
+    margin-right: 20px;
 }
 
 .sideways_slider {
