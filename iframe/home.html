@@ -2,9 +2,14 @@
 
 <html>
 <head>
-
+    <script src="../assets/js/api.js" type="application/javascript"></script>
     <script>
+        let api = new iframe_class()
+        console.log(api)
 
+        const onload = () => {
+            api.set_queue([9,4,2,3])
+        }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../assets/css/styles.css"/>
