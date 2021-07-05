@@ -34,6 +34,28 @@ class outer_frame_class {
 
         // Setup a script that runs when the frame receives a message
         window.onmessage = this.message_receiver
+
+        // Setup all the player elements
+        try {
+            this.player = {
+                elements : {
+                    skip_forwards: document.getElementById("skip_forwards"),
+                    skip_backwards: document.getElementById("skip_backwards"),
+                    toggle: document.getElementById("toggle"),
+                    track_data: document.getElementById("track_data"),
+                    snake: document.getElementById("player_snake")
+                }
+            }
+        } catch(e) {
+            console.error("Could not attach all player elements to variables")
+            console.error(e)
+            return false
+        }
+        console.log(this.player)
+
+        this.player.elements.skip_forwards.onclick = this.skip_forwards
+        this.player.elements.skip_backwards.onclick = this.skip_backwards
+        this.player.elements.toggle.onclick = this.toggle
     }
 
     message_receiver(e) {
@@ -44,5 +66,14 @@ class outer_frame_class {
             // The iframe is telling the outer frame to set the queue
             alert("Set the queue to; " + JSON.stringify(data.data))
         }
+    }
+    skip_forwards() {
+        alert("Skipped forwards")
+    }
+    skip_backwards() {
+        alert("Skipped backwards")
+    }
+    toggle() {
+        alert("Toggled player")
     }
 }

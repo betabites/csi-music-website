@@ -75,7 +75,56 @@ h1, h2, h3 {
 
 #player {
     grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 150px 1fr;
     background-color: lightgray;
+    text-align: center;
+    padding: 20px;
+}
+
+#track_data {
+    text-align: left;
+}
+
+#player_controls {
+    display: inline-block;
+    margin-left: -150px;
+}
+
+#player_snake {
+    height: 5px;
+    border-radius: 50px;
+    background-color: black;
+    grid-column: 1/3;
+}
+
+#player_snake_slider {
+    width: 50%;
+    border-radius: 5px;
+    background-color: #00FF00;
+    height: 100%;
+}
+
+.skip {
+    display: inline-block;
+    margin-top: -3px;
+    width: 30px;
+}
+
+.skip_triangle {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right: 10px solid black;
+    display: inline-block;
+}
+.skip_bar {
+    display: inline-block;
+    height: 20px;
+    width: 5px;
+    border-radius: 5px;
+    background-color: black;
+    margin-right: -13px;
 }
 
 #content {

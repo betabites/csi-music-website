@@ -7,10 +7,13 @@
     <link href="assets/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
     <script src="assets/js/api.js" type="application/javascript"></script>
     <script>
-        let api = new outer_frame_class(document.getElementById("content"), document.getElementById("player"))
+        let api
+        const onload = () => {
+            api = new outer_frame_class(document.getElementById("content"), document.getElementById("player"))
+        }
     </script>
 </head>
-<body>
+<body onload="onload()">
 
 <div id="wrapper">
     <div id="small_menu" class="menu">
@@ -64,7 +67,25 @@
     </iframe>
 
     <div id="player">
+        <div id="track_data">
+            <strong>Track Title</strong><br>
+            <i>Albumn/Playlist title</i>
+        </div>
+        <div id="player_controls">
+            <div class="skip" id="skip_backwards">
+                <div class="skip_bar"></div>
+                <div class="skip_triangle"></div>
+            </div>
+            <img src="assets/icons/icon.svg" height="30px" style="display: inline-block" id="toggle"/>
+            <div class="skip" id="skip_forwards" style="transform: rotate(180deg)">
+                <div class="skip_bar"></div>
+                <div class="skip_triangle"></div>
+            </div>
+        </div>
 
+        <div id="player_snake">
+            <div id="player_snake_slider"></div>
+        </div>
     </div>
 </div>
 
