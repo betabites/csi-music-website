@@ -170,7 +170,7 @@ h1, h2, h3 {
     display: flex;
     overflow: hidden;
     overflow-x: scroll;
-    height: 227px;
+    height: 240px;
 }
 
 .playlist_title {
@@ -182,6 +182,7 @@ h1, h2, h3 {
     margin-right: 10px;
     width: 150px;
     text-align: center;
+    cursor: pointer;
 }
 
 .sideways_slider_icon {

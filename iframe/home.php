@@ -12,7 +12,7 @@ require "../api/connect.php";
         console.log(api)
 
         const onload = () => {
-            api.set_queue([9,4,2,3])
+            api.set_page_name("Home")
         }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,10 +36,10 @@ require "../api/connect.php";
                 $sql = "SELECT `playlists`.*, COUNT(`tracks`.`track_id`) AS 'track_count' FROM `playlists` JOIN `track_to_playlist` ON `track_to_playlist`.`playlist_id` = `playlists`.`playlist_id` JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id` WHERE `type` = 1 GROUP BY `playlist_id` ORDER BY RAND() LIMIT 5";
                 foreach($conn->query($sql) as $albumn) {
                     ?><div class="sideways_slider_item">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')" onclick="api.set_queue(<?php echo $albumn["playlist_id"]; ?>, 1)">
                         <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
                     </div>
-                    <div class="playlist_title">
+                    <div class="playlist_title" onclick="api.send_iframe_to_page('iframe/playlist.php?playlist_id=<?php echo $albumn["playlist_id"]; ?>')">
                         <?php echo $albumn["title"]; ?><br>
                         <i><?php echo $albumn["track_count"]; ?> tracks</i>
                     </div>
@@ -47,7 +47,7 @@ require "../api/connect.php";
                 }
                 ?>
                 <div class="sideways_slider_more sideways_slider_item">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')" onclick="window.location.href = 'refined_search.php?refined_type=1'">
                         +
                     </div>
                     Show all<br>
@@ -115,6 +115,8 @@ require "../api/connect.php";
             </div>
         </div>
     </div>
+    <audio src="../test.mp3">
+    </audio>
 </div>
 </body>
 </html>

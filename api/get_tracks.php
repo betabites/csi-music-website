@@ -28,7 +28,16 @@ if (isset($_GET["track_id"])) {
 } elseif (isset($_GET["playlist_id"]) and isset($_GET["name"])) {
     $query = "SELECT * FROM `tracks`";
 } elseif (isset($_GET["playlist_id"])) {
-    $sql = "SELECT * FROM `tracks`";
+
+    // Validate the playlist id parameter
+    if (preg_match("/^\d+$/",$_GET["playlist_id"])) {
+        $sql = "SELECT `tracks`.* FROM `track_to_playlist` JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id` WHERE `playlist_id` = ".$_GET["playlist_id"];
+    } else {
+        // The track_id string contains invalid characters
+        http_response_code(500);
+        die("{\"error\":1,\"message\":\"Invalid parameter\"}");
+    }
+
 } elseif (isset($_GET["name"])) {
     $sql = "SELECT * FROM `tracks`";
 } else {
