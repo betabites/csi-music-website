@@ -163,14 +163,18 @@ h1, h2, h3 {
 }
 
 .sideways_slider {
-    height: 196px;
-    display: grid;
-    grid-template-columns: 1fr 150px;
+    height: 227px;
 }
 
 .sideways_slider_content {
+    display: flex;
     overflow: hidden;
-    height: 196px;
+    overflow-x: scroll;
+    height: 227px;
+}
+
+.playlist_title {
+    height: 117px;
 }
 
 .sideways_slider_item {

@@ -1,3 +1,7 @@
+<?php
+require "../api/connect.php";
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -28,33 +32,26 @@
         <h1>Albumns</h1>
         <div class="sideways_slider">
             <div class="sideways_slider_content">
-                <div class="sideways_slider_item">
+                <?php
+                $sql = "SELECT `playlists`.*, COUNT(`tracks`.`track_id`) AS 'track_count' FROM `playlists` JOIN `track_to_playlist` ON `track_to_playlist`.`playlist_id` = `playlists`.`playlist_id` JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id` WHERE `type` = 1 GROUP BY `playlist_id` ORDER BY RAND() LIMIT 5";
+                foreach($conn->query($sql) as $albumn) {
+                    ?><div class="sideways_slider_item">
                     <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
                         <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
                     </div>
-                    This is an albumn<br>
-                    <i>15 tracks</i>
-                </div>
-                <div class="sideways_slider_item">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
-                        <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
+                    <div class="playlist_title">
+                        <?php echo $albumn["title"]; ?><br>
+                        <i><?php echo $albumn["track_count"]; ?> tracks</i>
                     </div>
-                    This is an albumn<br>
-                    <i>15 tracks</i>
-                </div>
-                <div class="sideways_slider_item">
+                </div><?php
+                }
+                ?>
+                <div class="sideways_slider_more sideways_slider_item">
                     <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
-                        <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
+                        +
                     </div>
-                    This is an albumn<br>
-                    <i>15 tracks</i>
+                    Show all<br>
                 </div>
-            </div>
-            <div class="sideways_slider_more sideways_slider_item">
-                <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
-                    +
-                </div>
-                Show all<br>
             </div>
         </div>
     </div>

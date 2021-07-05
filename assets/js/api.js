@@ -59,6 +59,7 @@ class outer_frame_class {
     }
 
     message_receiver(e) {
+        // console.log(e.data)
         let data = JSON.parse(e.data)
 
         // Detect what the iframe wants the outer frame to do
@@ -75,5 +76,27 @@ class outer_frame_class {
     }
     toggle() {
         alert("Toggled player")
+    }
+
+    async request(url, method = "GET", form_data = new FormData()) {
+        return new Promise(resolve => {
+            let xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = (e) => {
+                if (xhttp.readyState === 4 && xhttp.status === 200) {
+                    resolve(xhttp.responseText)
+                }
+            }
+
+            xhttp.open(method, url)
+            xhttp.send()
+        })
+    }
+    async get_track(track_id) {
+        return new Promise(async resolve => {
+            // Uses the API to request information about a track
+            let request = await this.request("api/get_tracks.php?track_id=" + track_id)
+            let track_data = JSON.parse(request).data[0]
+            resolve(track_data)
+        })
     }
 }

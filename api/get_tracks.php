@@ -19,7 +19,7 @@ $sql = "SELECT * FROM `tracks` ";
 if (isset($_GET["track_id"])) {
     // Validate the track id parameter
     if (preg_match("/^\d+$/",$_GET["track_id"])) {
-        $sql = "SELECT * FROM `tracks`";
+        $sql = "SELECT * FROM `tracks` WHERE `track_id` = ".$_GET["track_id"];
     } else {
         // The track_id string contains invalid characters
         http_response_code(500);
