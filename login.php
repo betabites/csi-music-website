@@ -9,9 +9,12 @@
         body {
             margin: 0;
             padding: 20px;
-            background-color: black;
-            min-width: 100vw;
-            min-height: 100vh;
+            background-image: url("assets/images/background.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-width: calc(100vw - 40px);
+            min-height: calc(100vh - 40px);
             text-align: center;
         }
 
@@ -23,9 +26,18 @@
         }
 
         input {
-            padding: 10px;
-            width: calc(100% - 20px);
+            padding: 20px;
+            width: calc(100% - 40px);
             margin-bottom: 10px;
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+        }
+
+        ::placeholder {
+            color: white;
+            opacity: 1;
         }
 
         #button_tray {
@@ -37,6 +49,12 @@
             border-radius: 3px;
             margin-left: 10px;
             min-width: 105px;
+            border: none;
+        }
+
+        #login_button {
+            background-color: #00FF00;
+            /*color: white;*/
         }
     </style>
 </head>
@@ -45,14 +63,14 @@
     <h1>Welcome to Graeme's Music Website!</h1>
     <form method="post">
         <label>
-            <input type="text" placeholder="Please enter your username" name="username"/>
+            <input type="text" placeholder="Username" name="username"/>
         </label>
         <label>
-            <input type="password" placeholder="Please input your password" name="password">
+            <input type="password" placeholder="Password" name="password">
         </label>
         <div id="button_tray">
             <button>Forgot Password</button>
-            <button>Login</button>
+            <button id="login_button">Login</button>
         </div>
     </form>
 </div>
