@@ -36,7 +36,7 @@ require "../api/connect.php";
                 $sql = "SELECT `playlists`.*, COUNT(`tracks`.`track_id`) AS 'track_count' FROM `playlists` JOIN `track_to_playlist` ON `track_to_playlist`.`playlist_id` = `playlists`.`playlist_id` JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id` WHERE `type` = 1 GROUP BY `playlist_id` ORDER BY RAND() LIMIT 5";
                 foreach($conn->query($sql) as $albumn) {
                     ?><div class="sideways_slider_item">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')" onclick="api.play_playlist(<?php echo $albumn["playlist_id"]; ?>, 1)">
+                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')" onclick="api.play_playlist(<?php echo $albumn["playlist_id"].",'".$albumn["title"]; ?>')">
                         <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
                     </div>
                     <div class="playlist_title" onclick="api.send_iframe_to_page('iframe/playlist.php?playlist_id=<?php echo $albumn["playlist_id"]; ?>')">
