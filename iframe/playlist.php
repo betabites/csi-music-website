@@ -20,6 +20,8 @@ $get_playlist_sql = "SELECT * FROM `playlists` WHERE `playlist_id` = ".$_GET["pl
 foreach ($conn->query($get_playlist_sql) as $data) {
     $playlist = $data;
 }
+
+$tracks = $conn->query($get_tracks_sql);
 ?>
 
 <!DOCTYPE html>
@@ -40,20 +42,20 @@ foreach ($conn->query($get_playlist_sql) as $data) {
 <body onload="onload()">
 <div class="page_header">
     <div class="page_header_albumn_cover">
-        <img class="play_track_button" src="../assets/icons/play.svg"/>
+        <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
     </div>
-    <h1 onclick="api.send_iframe_backwards()">Welcome to ????????</h1><br>
-    <h3>There are XX tracks on this database</h3>
+    <h1 onclick="api.send_iframe_backwards()"><?php echo $playlist["title"];?></h1><br>
+    <h3>There are <?php echo $tracks->rowCount(); ?> tracks in this playlist</h3>
 </div>
 
 <div class="wrapper">
     <div class="playlist_item_list">
         <?php
-        foreach ($conn->query($get_tracks_sql) as $track) {
+        foreach ($conn->query($get_tracks_sql) as $i => $track) {
             ?>
             <div class="playlist_item">
-                <div class="playlist_item_icon">
-
+                <div class="playlist_item_icon" onclick="api.play_playlist(<?php echo $playlist["playlist_id"].",'".$playlist["title"]."',".$i;?>)">
+                    <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
                 </div>
                 <?php echo $track["title"]; ?>
             </div>
