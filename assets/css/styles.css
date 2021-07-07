@@ -218,11 +218,23 @@ h1, h2, h3 {
 }
 
 .playlist_card {
-    border: 1px solid;
+    /*border: 1px solid;*/
+    background-color: rgba(255,0,255,0.1);
     border-radius: 20px;
     padding: 20px;
     display: grid;
     grid-template-columns: 150px 1fr 1fr;
+    transition: box-shadow 0.5s, transform 0.5s;
+    cursor: pointer;
+}
+
+.playlist_card:nth-child(even) {
+    background-color: rgba(0,255,0,0.1);
+}
+
+.playlist_card:hover {
+    box-shadow: 5px 5px 10px black;
+    transform: translate(-5px, -5px);
 }
 
 .playlist_card_icon {
