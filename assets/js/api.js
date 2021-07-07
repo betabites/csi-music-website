@@ -207,6 +207,12 @@ class outer_frame_class extends API {
         clearInterval(api.player.snake_interval)
         api.player.elements.snake_slider.style.width = "0%"
         api.update_title()
+
+        // Detect if player has another track to move on to
+        if (api.queue.length > api.current_track) {
+            api.current_track += 1
+            api.load_track()
+        }
     }
 
     async on_track_pause() {
