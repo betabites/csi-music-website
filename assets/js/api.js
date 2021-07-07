@@ -55,7 +55,7 @@ class iframe_class extends API {
             {
                 command_type: 1, // Type 1 is set queue
                 data: {
-                    playlist_name: "",
+                    playlist_name: playlist_name,
                     ids: ids,
                     position: position
                 }
@@ -159,6 +159,7 @@ class outer_frame_class extends API {
             console.log("Picked up a set queue request")
             api.queue = data.data.ids
             api.current_track = data.data.position
+            api.current_playlist_name = data.data.playlist_name
             await api.load_track()
         } else if (data.command_type === 2) {
             console.log("Picked up name change")
@@ -195,7 +196,7 @@ class outer_frame_class extends API {
         this.player.track = track_data
 
         // Set track details
-        this.player.elements.track_data.innerHTML = "<strong>" + track_data.title + "</strong><br><i>Individual track</i>"
+        this.player.elements.track_data.innerHTML = "<strong>" + track_data.title + "</strong><br><i>" + api.current_playlist_name + "</i>"
 
         api.player.start = new Date()
         await api.player.player_el.play()
