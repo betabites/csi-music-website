@@ -7,6 +7,7 @@ class API {
     constructor(path_to_upper = "") {
         this.path_to_upper = path_to_upper
     }
+
     async request(url, method = "GET", form_data = new FormData()) {
         return new Promise(resolve => {
             let xhttp = new XMLHttpRequest()
@@ -20,6 +21,7 @@ class API {
             xhttp.send()
         })
     }
+
     async get_playlist_contents(playlist_id) {
         return new Promise(async resolve => {
             // Uses the API to request information about a track
@@ -29,6 +31,7 @@ class API {
             resolve(track_data)
         })
     }
+
     async get_track(track_id) {
         return new Promise(async resolve => {
             // Uses the API to request information about a track
@@ -46,9 +49,11 @@ class iframe_class extends API {
         super("../");
         window.onmessage = this.message_receiver
     }
+
     message_receiver(e) {
 
     }
+
     set_queue(ids, playlist_name = "Individual Track", position = 0) {
         // Parameter must be an array of track ids
         window.top.postMessage(JSON.stringify(
@@ -63,6 +68,7 @@ class iframe_class extends API {
         ), "*")
         console.log("Posted data")
     }
+
     set_page_name(name) {
         window.top.postMessage(JSON.stringify(
             {
@@ -71,6 +77,7 @@ class iframe_class extends API {
             }
         ), "*")
     }
+
     async play_playlist(playlist_id, playlist_name = "Individual Track", position = 0) {
         return new Promise(async resolve => {
             let track_ids = []
@@ -81,6 +88,10 @@ class iframe_class extends API {
         })
     }
 
+    async play_individual_track(track_id) {
+        api.set_queue([track_id], "Individual Track", 0)
+    }
+
     send_iframe_to_page(location) {
         window.top.postMessage(JSON.stringify(
             {
@@ -89,6 +100,7 @@ class iframe_class extends API {
             }
         ), "*")
     }
+
     send_iframe_backwards() {
         window.top.postMessage(JSON.stringify(
             {
@@ -116,7 +128,7 @@ class outer_frame_class extends API {
         // Setup all the player elements
         try {
             this.player = {
-                elements : {
+                elements: {
                     skip_forwards: document.getElementById("skip_forwards"),
                     skip_backwards: document.getElementById("skip_backwards"),
                     toggle: document.getElementById("toggle"),
@@ -128,8 +140,13 @@ class outer_frame_class extends API {
                 player_el: document.createElement("audio"),
                 is_playing: false
             }
-        }
-        catch(e) {
+            document.body.onkeypress = (e) => {
+                if (e.key === " ") {
+                    api.toggle()
+                }
+            }
+        } catch
+            (e) {
             console.error("Could not attach all player elements to variables")
             console.error(e)
             return false
@@ -172,25 +189,34 @@ class outer_frame_class extends API {
             api.send_iframe_backwards()
         }
     }
+
     skip_forwards() {
         alert("Skipped forwards")
     }
+
     skip_backwards() {
         alert("Skipped backwards")
     }
+
     toggle() {
-        alert("Toggled player")
+        if (this.player.is_playing) {
+            this.player.player_el.pause()
+        } else {
+            this.player.player_el.play()
+        }
     }
 
     async reset_player() {
         this.current_track = 0
         await this.load_track()
     }
+
     async load_track() {
         console.log(this)
         let track_data = await this.get_track(this.queue[this.current_track])
         console.log(track_data)
         // Get details for the next track
+
         api.player.player_el.src = "test.mp3"
         api.player.player_el.load()
         this.player.track = track_data
@@ -223,7 +249,9 @@ class outer_frame_class extends API {
         clearInterval(api.player.snake_interval)
 
         api.player.elements.toggle.src = "assets/icons/icon.svg"
-        api.player.elements.toggle.onclick = () => {api.player.player_el.play()}
+        api.player.elements.toggle.onclick = () => {
+            api.player.player_el.play()
+        }
     }
 
     async on_track_play() {
@@ -232,7 +260,9 @@ class outer_frame_class extends API {
         api.update_title()
 
         api.player.elements.toggle.src = "assets/icons/icon_pause.svg"
-        api.player.elements.toggle.onclick = () => {api.player.player_el.pause()}
+        api.player.elements.toggle.onclick = () => {
+            api.player.player_el.pause()
+        }
         api.player.snake_interval = setInterval(api.update_snake, 10)
     }
 
@@ -260,7 +290,7 @@ class outer_frame_class extends API {
 
     send_iframe_backwards() {
         if (api.iframe_history.length !== 1) {
-            api.iframe_history = api.iframe_history.slice(0,-1)
+            api.iframe_history = api.iframe_history.slice(0, -1)
         }
         console.log(api.iframe_history[api.iframe_history.length - 1])
         api.iframe.src = api.iframe_history[api.iframe_history.length - 1]
