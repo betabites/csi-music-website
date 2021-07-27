@@ -103,7 +103,9 @@ if (! isset($_SESSION["user_id"])) {
             </div>
 
             <div id="player_snake">
-                <div id="player_snake_slider"></div>
+                <div id="player_snake_slider">
+                    <div id="slide_circle"></div>
+                </div>
             </div>
         </div>
     </div>

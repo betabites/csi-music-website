@@ -145,8 +145,8 @@ class outer_frame_class extends API {
                     api.toggle()
                 }
             }
-        } catch
-            (e) {
+        }
+        catch (e) {
             console.error("Could not attach all player elements to variables")
             console.error(e)
             return false
@@ -162,6 +162,9 @@ class outer_frame_class extends API {
         this.player.player_el.addEventListener("pause", this.on_track_pause)
         this.player.player_el.addEventListener("play", this.on_track_play)
 
+        // Add draggable functionality to slider snake
+        this.player.slider_circle = document.getElementById("slide_circle")
+        this.player.slider_circle.onmousedown = this.snake_mouse_down
     }
 
     async message_receiver(e) {
@@ -294,5 +297,35 @@ class outer_frame_class extends API {
         }
         console.log(api.iframe_history[api.iframe_history.length - 1])
         api.iframe.src = api.iframe_history[api.iframe_history.length - 1]
+    }
+
+    snake_mouse_down(e) {
+        e = e || window.event
+        e.preventDefault()
+        console.log("slider circle pressed")
+
+        // Get the mouse position at drag start
+        api.drag_start = [e.clientX, e.clientY]
+        // document.onmouseup = this.snake_drag_end
+        document.onmousemove = (e) => {api.snake_drag(e)}
+        console.log("HERE!")
+    }
+
+    snake_drag(e) {
+        console.log("Snake moved")
+
+        e = e || window.event
+        e.preventDefault()
+        let coords = [api.drag_start[0] - e.clientX, api.drag_start[1] - e.clientY]
+        api.drag_start = [e.clientX, e.clientY]
+
+        api.player.slider_circle.style.left = coords[0] + "px"
+        api.player.slider_circle.style.top = coords[1] + "px"
+    }
+
+    snake_drag_end(e) {
+        console.log("Drag ended")
+        document.onmouseup = null;
+        document.onmousemove = null;
     }
 }
