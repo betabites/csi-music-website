@@ -214,6 +214,30 @@ class outer_frame_class extends API {
         await this.load_track()
     }
 
+    async url_to_blob(url) {
+        return new Promise(resolve => {
+            console.log("Making HTTP request...")
+            let xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = (e) => {
+                if (xhttp.readyState === 4 && xhttp.status === 200) {
+                    let uInt8Array = new Uint8Array(this.response); // Note:not xhr.responseText
+
+                    for (var i = 0, len = uInt8Array.length; i < len; ++i) {
+                        uInt8Array[i] = this.response[i];
+                    }
+                    console.log(uInt8Array)
+                    console.log(xhttp)
+                    let blob = new Blob(uInt8Array, {type: "audio/mp3"})
+                    console.log(blob)
+                    return(blob)
+                }
+            }
+
+            xhttp.open("GET", url)
+            xhttp.send()
+        })
+    }
+
     async load_track() {
         console.log(this)
         let track_data = await this.get_track(this.queue[this.current_track])
@@ -271,6 +295,9 @@ class outer_frame_class extends API {
 
     update_snake() {
         api.player.elements.snake_slider.style.width = (api.player.player_el.currentTime / api.player.player_el.duration) * 100 + "%"
+        let bounding_box = api.player.elements.snake_slider.getBoundingClientRect()
+        api.player.slider_circle.style.left = ((bounding_box.x + bounding_box.width) - 5) + "px"
+        api.player.slider_circle.style.top = (bounding_box.y - 2.5) + "px"
     }
 
     update_title() {
@@ -304,10 +331,13 @@ class outer_frame_class extends API {
         e.preventDefault()
         console.log("slider circle pressed")
 
-        // Get the mouse position at drag start
-        api.drag_start = [e.clientX, e.clientY]
-        // document.onmouseup = this.snake_drag_end
+        // Pause the music
+        api.resume_after_drag = api.player.is_playing
+        api.player.player_el.pause()
+
+        document.onmouseup = (e) => {api.snake_drag_end(e)}
         document.onmousemove = (e) => {api.snake_drag(e)}
+        api.player.slider_circle.style.opacity = "1"
         console.log("HERE!")
     }
 
@@ -316,16 +346,27 @@ class outer_frame_class extends API {
 
         e = e || window.event
         e.preventDefault()
-        let coords = [api.drag_start[0] - e.clientX, api.drag_start[1] - e.clientY]
-        api.drag_start = [e.clientX, e.clientY]
+        let snake_bounding_box = api.player.elements.snake.getBoundingClientRect()
 
-        api.player.slider_circle.style.left = coords[0] + "px"
-        api.player.slider_circle.style.top = coords[1] + "px"
+        if (e.clientX >= snake_bounding_box.x && e.clientX <= snake_bounding_box.x + snake_bounding_box.width) {
+            api.player.slider_circle.style.left = (e.clientX - 5) + "px"
+            api.player.elements.snake_slider.style.width = (((e.clientX - snake_bounding_box.x) / snake_bounding_box.width) * 100) + "%"
+        }
     }
 
     snake_drag_end(e) {
         console.log("Drag ended")
         document.onmouseup = null;
         document.onmousemove = null;
+        api.player.slider_circle.style.opacity = ""
+
+        // Navigate the audio player
+
+        // Calculate what point the player needs to be set to
+        let snake_bounding_box = api.player.elements.snake.getBoundingClientRect()
+        let percent = ((e.clientX - snake_bounding_box.x) / snake_bounding_box.width)
+        api.player.player_el.currentTime = api.player.player_el.duration * percent
+
+        if (api.resume_after_drag) api.player.player_el.play()
     }
 }
