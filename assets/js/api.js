@@ -163,8 +163,8 @@ class outer_frame_class extends API {
         this.player.player_el.addEventListener("play", this.on_track_play)
 
         // Add draggable functionality to slider snake
-        this.player.slider_circle = document.getElementById("slide_circle")
-        this.player.slider_circle.onmousedown = this.snake_mouse_down
+        this.player.elements.slider_circle = document.getElementById("slide_circle")
+        this.player.elements.snake.onmousedown = this.snake_mouse_down
     }
 
     async message_receiver(e) {
@@ -293,8 +293,8 @@ class outer_frame_class extends API {
     update_snake() {
         api.player.elements.snake_slider.style.width = (api.player.player_el.currentTime / api.player.player_el.duration) * 100 + "%"
         let bounding_box = api.player.elements.snake_slider.getBoundingClientRect()
-        api.player.slider_circle.style.left = ((bounding_box.x + bounding_box.width) - 5) + "px"
-        api.player.slider_circle.style.top = (bounding_box.y - 2.5) + "px"
+        api.player.elements.slider_circle.style.left = ((bounding_box.x + bounding_box.width) - 5) + "px"
+        api.player.elements.slider_circle.style.top = (bounding_box.y - 2.5) + "px"
     }
 
     update_title() {
@@ -334,7 +334,7 @@ class outer_frame_class extends API {
 
         document.onmouseup = (e) => {api.snake_drag_end(e)}
         document.onmousemove = (e) => {api.snake_drag(e)}
-        api.player.slider_circle.style.opacity = "1"
+        api.player.elements.slider_circle.style.opacity = "1"
         console.log("HERE!")
     }
 
@@ -350,7 +350,7 @@ class outer_frame_class extends API {
         let snake_bounding_box = api.player.elements.snake.getBoundingClientRect()
 
         if (e.clientX >= snake_bounding_box.x && e.clientX <= snake_bounding_box.x + snake_bounding_box.width) {
-            api.player.slider_circle.style.left = (e.clientX - 5) + "px"
+            api.player.elements.slider_circle.style.left = (e.clientX - 5) + "px"
             api.player.elements.snake_slider.style.width = (((e.clientX - snake_bounding_box.x) / snake_bounding_box.width) * 100) + "%"
         }
     }
@@ -359,7 +359,7 @@ class outer_frame_class extends API {
         console.log("Drag ended")
         document.onmouseup = null;
         document.onmousemove = null;
-        api.player.slider_circle.style.opacity = ""
+        api.player.elements.slider_circle.style.opacity = ""
 
         // Navigate the audio player
 
