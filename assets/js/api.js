@@ -214,45 +214,42 @@ class outer_frame_class extends API {
         await this.load_track()
     }
 
-    async url_to_blob(url) {
+    async download_audio(url) {
         return new Promise(resolve => {
             console.log("Making HTTP request...")
             let xhttp = new XMLHttpRequest()
             xhttp.onreadystatechange = (e) => {
                 if (xhttp.readyState === 4 && xhttp.status === 200) {
-                    let uInt8Array = new Uint8Array(this.response); // Note:not xhr.responseText
-
-                    for (var i = 0, len = uInt8Array.length; i < len; ++i) {
-                        uInt8Array[i] = this.response[i];
-                    }
-                    console.log(uInt8Array)
                     console.log(xhttp)
-                    let blob = new Blob(uInt8Array, {type: "audio/mp3"})
-                    console.log(blob)
-                    return(blob)
+                    // let blob = new Blob([xhttp.response], {type: "audio/mpeg"})
+                    resolve(xhttp.response)
                 }
             }
 
+            xhttp.responseType = "blob"
             xhttp.open("GET", url)
             xhttp.send()
         })
     }
 
     async load_track() {
-        console.log(this)
+        // console.log(this)
         let track_data = await this.get_track(this.queue[this.current_track])
         console.log(track_data)
         // Get details for the next track
 
-        api.player.player_el.src = "test.mp3"
-        api.player.player_el.load()
+        let blob = await api.download_audio("test.mp3")
+        console.log(blob)
+        api.player.player_el.src = URL.createObjectURL(blob)
+        api.player.player_el.type = "audio/mpeg"
+        await api.player.player_el.play()
         this.player.track = track_data
 
         // Set track details
         this.player.elements.track_data.innerHTML = "<strong>" + track_data.title + "</strong><br><i>" + api.current_playlist_name + "</i>"
 
         api.player.start = new Date()
-        await api.player.player_el.play()
+        // await api.player.player_el.play()
     }
 
     async on_track_end() {
