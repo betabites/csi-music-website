@@ -293,7 +293,7 @@ class outer_frame_class extends API {
     update_snake() {
         api.player.elements.snake_slider.style.width = (api.player.player_el.currentTime / api.player.player_el.duration) * 100 + "%"
         let bounding_box = api.player.elements.snake_slider.getBoundingClientRect()
-        api.player.elements.slider_circle.style.left = ((bounding_box.x + bounding_box.width) - 5) + "px"
+        api.player.elements.slider_circle.style.left = "calc(calc(calc(100vw - 40px) * " + (api.player.player_el.currentTime / api.player.player_el.duration) + ") + 15px)"
         api.player.elements.slider_circle.style.top = (bounding_box.y - 2.5) + "px"
     }
 
