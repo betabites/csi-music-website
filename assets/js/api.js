@@ -214,7 +214,7 @@ class outer_frame_class extends API {
         await this.load_track()
     }
 
-    async download_audio(url) {
+    async download_audio(track_id) {
         return new Promise(resolve => {
             console.log("Making HTTP request...")
             let xhttp = new XMLHttpRequest()
@@ -227,7 +227,7 @@ class outer_frame_class extends API {
             }
 
             xhttp.responseType = "blob"
-            xhttp.open("GET", url)
+            xhttp.open("GET", "api/return_track_file.php?track_id=" + track_id)
             xhttp.send()
         })
     }
@@ -238,7 +238,7 @@ class outer_frame_class extends API {
         console.log(track_data)
         // Get details for the next track
 
-        let blob = await api.download_audio("test.mp3")
+        let blob = await api.download_audio(this.queue[this.current_track])
         console.log(blob)
         api.player.player_el.src = URL.createObjectURL(blob)
         api.player.player_el.type = "audio/mpeg"
@@ -343,6 +343,10 @@ class outer_frame_class extends API {
 
         e = e || window.event
         e.preventDefault()
+
+        // Make sure that the snake won't try and reset itself
+        clearInterval(api.player.snake_interval)
+
         let snake_bounding_box = api.player.elements.snake.getBoundingClientRect()
 
         if (e.clientX >= snake_bounding_box.x && e.clientX <= snake_bounding_box.x + snake_bounding_box.width) {
