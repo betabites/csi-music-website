@@ -18,7 +18,7 @@ class API {
             }
 
             xhttp.open(method, this.path_to_upper + url)
-            xhttp.send()
+            xhttp.send(form_data)
         })
     }
 
@@ -313,6 +313,7 @@ class outer_frame_class extends API {
     send_iframe_to_page(location) {
         api.iframe.src = location
         api.iframe_history.push(location)
+        document.getElementById('large_menu_frame').style.display = 'none'
     }
 
     send_iframe_backwards() {

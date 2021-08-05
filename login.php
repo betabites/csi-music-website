@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             if (password_verify($_POST["password"], $results[0]["password"])) {
                 $_SESSION["user_id"] = $results[0]["user_id"];
+                $_SESSION["username"] = $results[0]["username"];
                 header("Location: index.php");
                 die();
             } else {
@@ -28,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         $query->closeCursor();
-    } else {
+    }
+    else {
         echo "Login error; A required field is missing";
     }
 }

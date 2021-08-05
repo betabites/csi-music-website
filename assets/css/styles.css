@@ -347,3 +347,54 @@ h1, h2, h3 {
 #player:hover > #player_snake > #player_snake_slider > #slide_circle {
     opacity: 1;
 }
+
+#edit_user_wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    transition: background-color 1s, height 1s;
+}
+
+#edit_user {
+    display: inline-block;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    background-color: white;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+}
+
+input {
+    padding: 20px;
+    width: calc(100% - 40px);
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+#edit_user > form > div > button {
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-left: 10px;
+    min-width: 105px;
+    border: red 1px solid;
+    color: red;
+    background-color: transparent;
+}
+
+#save_button {
+    background-color: #00FF00 !important;
+    border: unset !important;
+    color: black !important;
+}
