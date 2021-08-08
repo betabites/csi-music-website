@@ -40,6 +40,18 @@ ORDER BY `title` ASC";
     foreach ($conn->query($sql) as $result) {
         array_push($data, $result);
     }
+} elseif ($_GET["playlist_type"] == 2) {
+    // Get Albumns
+    $sql = "SELECT COUNT(`playlists`.`playlist_id`) AS 'count', `playlists`.* FROM `playlists`
+JOIN `track_to_playlist` ON `playlists`.`playlist_id` = `track_to_playlist`.`playlist_id`
+JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id`
+WHERE `type` = 2
+GROUP BY `playlists`.`playlist_id`
+ORDER BY `title` ASC";
+
+    foreach ($conn->query($sql) as $result) {
+        array_push($data, $result);
+    }
 }
 
 echo json_encode($data);

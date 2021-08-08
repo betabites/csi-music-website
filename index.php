@@ -30,7 +30,7 @@ if (! isset($_SESSION["user_id"])) {
                 <i class="fas fa-home"></i>
             </div>
             <div class="seperator"></div>
-            <div class="small_menuitem" title="Search">
+            <div class="small_menuitem" title="Show all" onclick="api.send_iframe_to_page('iframe/refined_search.php?refined_type=5')">
                 <i class="fas fa-search"></i>
             </div>
             <div class="seperator"></div>
@@ -53,22 +53,8 @@ if (! isset($_SESSION["user_id"])) {
                 <div class="seperator"></div>
 
                 <div class="small_menuitem">
-                    <i class="fas fa-search"></i>
-                    Search
-                </div>
-
-                <div class="seperator"></div>
-
-                <div class="small_menuitem"  onclick="api.send_iframe_to_page('iframe/refined_search.php?refined_type=5')">
-                    <i class="fas fa-search"></i>
-                    Show all tracks (by artist)
-                </div>
-
-                <div class="seperator"></div>
-
-                <div class="small_menuitem">
-                    <i class="fas fa-search"></i>
-                    Show all tracks (by genre)
+                    <i class="fas fa-search" onclick="api.send_iframe_to_page('iframe/refined_search.php?refined_type=5')"></i>
+                    Show all
                 </div>
 
                 <div class="seperator"></div>
