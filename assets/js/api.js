@@ -238,7 +238,11 @@ class outer_frame_class extends API {
         console.log(track_data)
         // Get details for the next track
 
+        // Show little animation while downloading track
+        api.player.elements.toggle.classList.add("spin")
         let blob = await api.download_audio(this.queue[this.current_track])
+        api.player.elements.toggle.classList.remove("spin")
+
         console.log(blob)
         api.player.player_el.src = URL.createObjectURL(blob)
         api.player.player_el.type = "audio/mpeg"
