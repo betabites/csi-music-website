@@ -12,7 +12,11 @@ foreach ($results as $result) {
     if (file_exists("../media/" . $result["filename"])) {
         readfile(("../media/" . $result["filename"]));
     } else {
-        readfile("../media/test.mp3");
+        // Media file does not exist, so return a random sample media file
+        $samples = scandir("../media/samples");
+        array_splice($samples, 0, 2);
+        readfile("../media/samples/".$samples[array_rand($samples,1)]);
+
     }
 }
 
