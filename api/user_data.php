@@ -1,14 +1,20 @@
 <?php
+require "../api/connect.php";
+
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     die("Request type MUST be 'post'");
+} elseif ((! isset($_POST["id"])) and isset($_POST["username"])) {
+    $sql = "INSERT INTO `users`(`username`, `email`, `password`, `admin`) VALUES ('".htmlentities($_POST["username"])."','".htmlentities($_POST["email"])."','".password_hash($_POST["pwd"], PASSWORD_DEFAULT)."',0)";
+//    echo $sql;
+    $conn->query($sql);
+    die("{\"error\":0,\"message\":\"Success!\"}");
 } elseif (! isset($_POST["id"])) {
-    die("{\"error\":1,\"message\":\"Required parameter 'id' not provided\"}");
+    die("{\"error\":1,\"message\":\"Missing required parameter(s)\"}");
 } else {
     // Detect what type of command is trying to be performed
     if (isset($_POST["id"])) {
         // Validate the track id parameter
         if (preg_match("/^\d+$/",$_POST["id"])) {
-            require "../api/connect.php";
             if (isset($_GET["delete"])) {
                 // Delete a user
                 $sql = "DELETE FROM `users` WHERE `user_id` = ".$_POST["id"];

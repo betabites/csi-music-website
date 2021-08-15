@@ -21,6 +21,7 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
         let selected_id
         let selected_element
         let user_edit_elements = {}
+        let new_user = false
 
         const delete_account = async (e) => {
             e.preventDefault()
@@ -44,7 +45,9 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
 
             // Send updated data to server
             let data = new FormData()
-            data.append("id", selected_id)
+            if (! new_user) {
+                data.append("id", selected_id)
+            }
             data.append("username", user_edit_elements.username.value)
             data.append("email", user_edit_elements.email.value)
             if(user_edit_elements.pwd.value !== "") {
@@ -52,17 +55,25 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
             }
 
             try {
-                let json = JSON.parse(await api.request("api/user_data.php", "post", data))
+                let body = await api.request("api/user_data.php", "post", data)
+                console.log(body)
+                let json = JSON.parse(body)
                 if (json.error === 0) {
                     // Successfully saved
                     user_edit_elements.wrapper.style.backgroundColor = ""
                     user_edit_elements.wrapper.style.height = ""
                     user_edit_elements.box.style.opacity = ""
                     user_edit_elements.box.style.pointerEvents = ""
+
+                    if (new_user) {
+                        window.location.reload()
+                    }
                 } else {
+                    console.log("")
                     alert("Whoops! There seems to have been an error trying to save your changes.")
                 }
             } catch (e) {
+                console.log(e)
                 alert("Whoops! There seems to have been an error trying to save your changes.")
             }
         }
@@ -70,16 +81,21 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
         const edit_account = async (id) => {
             let data = new FormData()
             data.append("id", id.toString())
-            let user_data = await api.request("api/user_data.php", "post", data)
-            let user = JSON.parse(user_data)
-            selected_element = document.getElementById(id + "_user")
+            if (id === "new") {
+                new_user = true
+            } else {
+                let user_data = await api.request("api/user_data.php", "post", data)
+                let user = JSON.parse(user_data)
+                selected_element = document.getElementById(id + "_user")
 
+                new_user = false
 
-            selected_id = id
+                selected_id = id
 
-            user_edit_elements.username.value = user.username
-            user_edit_elements.email.value = user.email
-            user_edit_elements.pwd.value = ""
+                user_edit_elements.username.value = user.username
+                user_edit_elements.email.value = user.email
+                user_edit_elements.pwd.value = ""
+            }
 
             user_edit_elements.wrapper.style.backgroundColor = "rgba(0,0,0,0.75)"
             user_edit_elements.wrapper.style.height = "calc(100vh - 40px)"
@@ -130,6 +146,15 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
                     </div><?php
                 }
                 ?>
+
+                <div class="sideways_slider_item" id="new_user" onclick="edit_account('new')">
+                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                        <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
+                    </div>
+                    <div class="playlist_title">
+                        + Add new user
+                    </div>
+                </div>
             </div>
         </div>
     </div>
