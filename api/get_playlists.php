@@ -18,7 +18,7 @@ if (! isset($_GET["playlist_type"])) {
 require("../api/connect.php");
 if ($_GET["playlist_type"] == 0) {
     // Get Artists
-    $sql = "SELECT COUNT(`artists`.`artist_id`) AS 'count', `artists`.* FROM `artists`
+    $sql = "SELECT COUNT(`artists`.`artist_id`) AS 'count', SUM(`tracks`.`duration`) AS 'duration', `artists`.* FROM `artists`
 JOIN `track_to_artist` ON `artists`.`artist_id` = `track_to_artist`.`artist_id`
 JOIN `tracks` ON `tracks`.`track_id` = `track_to_artist`.`track_id`
 WHERE 1
@@ -30,7 +30,7 @@ ORDER BY `artist_name` ASC";
     }
 } elseif ($_GET["playlist_type"] == 1) {
     // Get Albumns
-    $sql = "SELECT COUNT(`playlists`.`playlist_id`) AS 'count', `playlists`.* FROM `playlists`
+    $sql = "SELECT COUNT(`playlists`.`playlist_id`) AS 'count', SUM(`tracks`.`duration`) AS 'duration', `playlists`.* FROM `playlists`
 JOIN `track_to_playlist` ON `playlists`.`playlist_id` = `track_to_playlist`.`playlist_id`
 JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id`
 WHERE `type` = 1
@@ -42,7 +42,7 @@ ORDER BY `title` ASC";
     }
 } elseif ($_GET["playlist_type"] == 2) {
     // Get Albumns
-    $sql = "SELECT COUNT(`playlists`.`playlist_id`) AS 'count', `playlists`.* FROM `playlists`
+    $sql = "SELECT COUNT(`playlists`.`playlist_id`) AS 'count', SUM(`tracks`.`duration`) AS 'duration', `playlists`.* FROM `playlists`
 JOIN `track_to_playlist` ON `playlists`.`playlist_id` = `track_to_playlist`.`playlist_id`
 JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id`
 WHERE `type` = 2
