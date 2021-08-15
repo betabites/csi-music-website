@@ -34,8 +34,12 @@ if (! isset($_SESSION["user_id"])) {
                 <i class="fas fa-search"></i>
             </div>
             <div class="seperator"></div>
-            <div class="small_menuitem" title="My Account - <?php echo $_SESSION["username"]; ?>">
+            <div class="small_menuitem" title="My Account - <?php echo $_SESSION["username"]; ?>" onclick="api.send_iframe_to_page('iframe/account.php')">
                 <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="seperator"></div>
+            <div class="small_menuitem" title="Logout" onclick="window.location.href='logout.php'">
+                <i class="fas fa-sign-out-alt"></i>
             </div>
         </div>
 
@@ -62,6 +66,13 @@ if (! isset($_SESSION["user_id"])) {
                 <div class="small_menuitem" onclick="api.send_iframe_to_page('iframe/account.php')">
                     <i class="fas fa-user-circle"></i>
                     My Account - <?php echo $_SESSION["username"]; ?>
+                </div>
+
+                <div class="seperator"></div>
+
+                <div class="small_menuitem" onclick="window.location.href='logout.php'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
                 </div>
             </div>
             <div id="large_menu_darkener" onclick="document.getElementById('large_menu_frame').style.display = 'none'">
