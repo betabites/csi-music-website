@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Get all users
 require("../api/connect.php");
 $normal_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 0");
@@ -108,6 +110,7 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
     <div class="page_header_albumn_cover"></div>
     <h1>Your Account</h1><br>
     <h3>There are <?php echo $normal_users->rowCount() + $admin_users->rowCount(); ?> users</h3>
+    <br><button onclick="edit_account(<?php echo $_SESSION["user_id"]; ?>)">Edit my info</button> <button>Upload new profile picture</button>
 </div>
 
 <div class="wrapper">
