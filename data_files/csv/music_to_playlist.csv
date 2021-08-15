@@ -1,76 +1,219 @@
-﻿artist_id,artist_name
-1,A Flock of Seagulls
-2,Acoustic Alchemy
-3,Alison Krauss
-4,Angus Stone
-5,Julia Stone
-6,Arctic Monkeys
-7,Arlo Guthrie
-8,Average White Band
-9,Belinda Carlisle
-10,Big Country
-11,Black Lodge Singers
-12,Bob Dylan
-13,Chris de Burgh
-14,Chris Rea
-15,Country Joe
-16,The Fish
-17,Daughter
-18,Dave Dobbyn
-19,Herbs
-20,David Byrne
-21,St. Vincent
-22,Don McLean
-23,Earl Klugh
-24,Enigma
-25,Enya
-26,Evanescence
-27,Faith Hill
-28,Feist
-29,Fleetwood Mac
-30,Flogging Molly
-31,Gael Force
-32,Gin Wigmore
-33,Icehouse
-34,Imagine Dragons
-35,Jackson Browne
-36,James Taylor
-37,The Dixie Chicks
-38,Jethro Tull
-39,Joe Cocker
-40,Lee Ann Womack
-41,Lee Ann Womack
-42,Lynyrd Skynyrd
-43,Maria Muldaur
-44,Matthew Sweet
-45,Susanna Hoffs
-46,Mother Earth
-47,Mum
-48,Mumford & Sons
-49,Nancy Wilson
-50,Nina Simone
-51,Oceania
-52,Owl City
-53,Pet Shop Boys
-54,Pink Floyd
-55,Rickie Lee Jones
-56,Ronan Keating
-57,Sarah Slean
-58,Shone Laing
-59,Soul Divas
-60,St. Germain
-61,St. Vincent
-62,Stevie Wonder
-63,The Bangles
-64,The Civil Wars
-65,The Cranberries
-66,The Front Lawn
-67,The Nolans
-68,The Wailin' Jennys
-69,Three Decades Of Males
-70,Varios
-71,Wai.Tai
-72,Wendy Matthews
-73,Wilson Philips
-74,Wolfstone
-75,Xavier Rudd
+﻿track_id,playlist_id
+45,1
+65,2
+94,2
+56,3
+41,4
+44,4
+5,5
+6,6
+7,7
+8,8
+17,117
+18,9
+81,9
+35,10
+16,11
+11,12
+12,13
+15,14
+39,14
+86,15
+23,16
+19,17
+62,18
+73,18
+58,19
+93,20
+38,21
+14,22
+61,23
+88,23
+48,24
+30,25
+21,26
+50,27
+54,28
+22,29
+78,30
+25,31
+52,31
+79,31
+67,32
+2,33
+36,33
+80,34
+46,35
+10,36
+63,36
+74,36
+83,37
+20,38
+32,38
+9,39
+40,40
+27,41
+57,41
+76,42
+43,43
+82,43
+68,43
+92,44
+47,45
+77,46
+1,47
+89,48
+34,49
+26,50
+29,51
+71,52
+51,53
+60,53
+72,54
+55,55
+33,56
+69,57
+90,58
+91,59
+24,60
+70,61
+53,62
+3,63
+87,64
+42,65
+28,66
+37,66
+64,67
+13,68
+49,69
+66,70
+31,71
+84,71
+85,72
+4,74
+75,75
+59,76
+95,77
+85,73
+61,78
+88,78
+50,79
+51,79
+59,79
+60,79
+77,79
+95,79
+95,80
+95,81
+21,79
+21,82
+21,83
+21,84
+21,80
+91,85
+65,86
+78,86
+94,86
+55,87
+72,87
+33,88
+46,88
+6,89
+9,89
+10,89
+62,89
+73,89
+93,89
+45,90
+80,90
+41,91
+44,91
+40,93
+7,92
+66,92
+70,92
+1,94
+3,94
+12,94
+31,94
+84,94
+18,94
+18,95
+81,94
+81,95
+35,94
+35,80
+69,94
+69,80
+17,94
+17,118
+2,96
+36,96
+83,97
+90,97
+53,97
+53,80
+58,97
+58,80
+22,97
+22,80
+22,98
+22,99
+92,97
+92,80
+92,98
+92,99
+14,100
+85,100
+89,100
+20,101
+20,102
+20,103
+25,104
+52,104
+79,104
+32,101
+32,102
+32,103
+19,105
+19,102
+39,103
+64,103
+43,106
+82,106
+5,99
+67,99
+75,99
+86,99
+54,107
+49,108
+56,108
+48,109
+13,110
+27,111
+57,111
+68,111
+4,80
+8,80
+15,80
+26,80
+29,80
+63,80
+71,80
+74,80
+87,80
+23,80
+23,88
+38,80
+38,88
+47,80
+47,88
+24,112
+28,112
+37,112
+11,113
+16,113
+42,114
+76,115
+30,116
+34,116
