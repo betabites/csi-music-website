@@ -1,4 +1,4 @@
-playlist_id,title,tag,type
+﻿playlist_id,title,tag,type
 1,10 Years Of Hits,,1
 2,A Hundred Miles or More,A Collection,1
 3,A Momentary Lapse Of Reason,,1
@@ -66,7 +66,7 @@ playlist_id,title,tag,type
 65,The Best of Nancy Wilson,,1
 66,The Collection,,1
 67,The Cross of Changes,,1
-68,The Deginitive Collection,,1
+68,The Definitive Collection,,1
 69,The Division Bell,,1
 70,Three Decades Of Males,,1
 71,Til We Outnumber 'Em,Woody Guthrie,1
@@ -115,3 +115,5 @@ playlist_id,title,tag,type
 114,Vocal,,2
 115,Woman,,2
 116,World,,2
+117,As Good As It Gets,,1
+118,UK,,2
