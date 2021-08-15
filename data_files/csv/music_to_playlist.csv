@@ -1,216 +1,76 @@
-﻿track_id,playlist_id
-70,1
-5,2
-6,2
-67,3
-16,4
-17,4
-65,5
-34,6
-29,7
-50,8
-20,9
-21,9
-61,10
-80,11
-7,12
-85,13
-57,14
-58,14
-91,15
-87,16
-19,17
-48,18
-49,18
-44,19
-82,20
-37,21
-30,22
-3,23
-4,23
-25,24
-39,25
-33,26
-18,27
-59,28
-8,29
-69,30
-93,31
-94,31
-95,31
-27,32
-75,33
-76,33
-66,34
-38,35
-46,36
-47,36
-52,36
-26,37
-88,38
-89,38
-53,39
-84,40
-40,41
-41,41
-90,42
-1,43
-2,43
-42,43
-9,44
-92,45
-28,46
-35,47
-55,48
-64,49
-54,50
-43,51
-45,52
-71,53
-72,53
-36,54
-24,55
-73,56
-22,57
-60,58
-83,59
-74,60
-23,60
-77,62
-10,63
-51,64
-62,65
-14,66
-15,66
-31,67
-78,68
-68,69
-86,70
-11,71
-12,71
-63,72
-63,73
-56,74
-79,75
-32,76
-81,77
-3,78
-4,78
-18,79
-28,79
-71,79
-72,79
-32,79
-81,79
-81,80
-81,81
-33,79
-33,82
-33,83
-33,84
-33,80
-83,85
-5,86
-6,86
-69,86
-36,86
-24,86
-38,88
-73,88
-34,89
-48,89
-49,89
-82,89
-52,89
-53,89
-70,90
-66,90
-16,91
-17,91
-84,93
-29,92
-23,92
-86,92
-85,94
-35,94
-10,94
-11,94
-12,94
-20,94
-20,95
-21,94
-21,95
-61,94
-61,80
-22,94
-22,80
-75,96
-76,96
-26,97
-60,97
-44,80
-44,97
-77,80
-77,97
-8,97
-8,80
-8,98
-8,99
-9,97
-9,80
-9,98
-9,99
-30,100
-55,100
-63,100
-88,101
-88,102
-88,103
-93,104
-94,104
-95,104
-89,101
-89,102
-89,103
-19,105
-19,102
-58,103
-31,103
-1,106
-2,106
-65,99
-91,99
-27,99
-79,99
-59,107
-67,108
-68,108
-25,109
-78,110
-40,111
-41,111
-42,111
-50,80
-57,80
-46,80
-47,80
-54,80
-43,80
-45,80
-51,80
-56,80
-87,80
-87,88
-37,80
-37,88
-92,80
-92,88
-74,112
-14,112
-15,112
-80,113
-7,113
-62,114
-90,115
-39,116
-64,116
+﻿artist_id,artist_name
+1,A Flock of Seagulls
+2,Acoustic Alchemy
+3,Alison Krauss
+4,Angus Stone
+5,Julia Stone
+6,Arctic Monkeys
+7,Arlo Guthrie
+8,Average White Band
+9,Belinda Carlisle
+10,Big Country
+11,Black Lodge Singers
+12,Bob Dylan
+13,Chris de Burgh
+14,Chris Rea
+15,Country Joe
+16,The Fish
+17,Daughter
+18,Dave Dobbyn
+19,Herbs
+20,David Byrne
+21,St. Vincent
+22,Don McLean
+23,Earl Klugh
+24,Enigma
+25,Enya
+26,Evanescence
+27,Faith Hill
+28,Feist
+29,Fleetwood Mac
+30,Flogging Molly
+31,Gael Force
+32,Gin Wigmore
+33,Icehouse
+34,Imagine Dragons
+35,Jackson Browne
+36,James Taylor
+37,The Dixie Chicks
+38,Jethro Tull
+39,Joe Cocker
+40,Lee Ann Womack
+41,Lee Ann Womack
+42,Lynyrd Skynyrd
+43,Maria Muldaur
+44,Matthew Sweet
+45,Susanna Hoffs
+46,Mother Earth
+47,Mum
+48,Mumford & Sons
+49,Nancy Wilson
+50,Nina Simone
+51,Oceania
+52,Owl City
+53,Pet Shop Boys
+54,Pink Floyd
+55,Rickie Lee Jones
+56,Ronan Keating
+57,Sarah Slean
+58,Shone Laing
+59,Soul Divas
+60,St. Germain
+61,St. Vincent
+62,Stevie Wonder
+63,The Bangles
+64,The Civil Wars
+65,The Cranberries
+66,The Front Lawn
+67,The Nolans
+68,The Wailin' Jennys
+69,Three Decades Of Males
+70,Varios
+71,Wai.Tai
+72,Wendy Matthews
+73,Wilson Philips
+74,Wolfstone
+75,Xavier Rudd
