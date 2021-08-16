@@ -1,3 +1,41 @@
+<?php
+session_start();
+// Redirect the user if they are already logged in
+if(isset($_SESSION["user_id"])) {
+    header("Location: index.php");
+    // The 'die' function ensures that the below HTML that would be sent, is not sent. Since the user is being redirected, it is unnecessary to send the HTML.
+    die();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check that the required parameters are set
+    if (isset($_POST["username"]) and isset($_POST["password"])) {
+        // Login and verify the info
+        require "api/connect.php";
+        $query = $conn->prepare("SELECT * FROM `users` WHERE `username` = :username OR `email` = :username");
+        $query->execute(array(':username' => $_POST["username"]));
+        $results = $query->fetchAll();
+
+        if (count($results) !== 1) {
+            echo "Login error; Incorrect login details";
+        } else {
+            if (password_verify($_POST["password"], $results[0]["password"])) {
+                $_SESSION["user_id"] = $results[0]["user_id"];
+                $_SESSION["username"] = $results[0]["username"];
+                header("Location: index.php");
+                die();
+            } else {
+                echo "Login error; Incorrect login details ".password_hash($_POST["password"], PASSWORD_DEFAULT);
+            }
+        }
+        $query->closeCursor();
+    }
+    else {
+        echo "Login error; A required field is missing";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
