@@ -1,5 +1,4 @@
-artist_id,artist_name
-1,A Flock of Seagulls
+﻿1,A Flock of Seagulls
 2,Acoustic Alchemy
 3,Alison Krauss
 4,Angus Stone
@@ -39,7 +38,6 @@ artist_id,artist_name
 38,Jethro Tull
 39,Joe Cocker
 40,Lee Ann Womack
-41,Lee Ann Womack
 42,Lynyrd Skynyrd
 43,Maria Muldaur
 44,Matthew Sweet
@@ -59,7 +57,6 @@ artist_id,artist_name
 58,Shone Laing
 59,Soul Divas
 60,St. Germain
-61,St. Vincent
 62,Stevie Wonder
 63,The Bangles
 64,The Civil Wars
@@ -74,3 +71,4 @@ artist_id,artist_name
 73,Wilson Philips
 74,Wolfstone
 75,Xavier Rudd
+76,As Good As It Gets
