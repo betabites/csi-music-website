@@ -4,7 +4,13 @@ require "../api/connect.php";
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     die("Request type MUST be 'post'");
 } elseif ((! isset($_POST["id"])) and isset($_POST["username"])) {
-    $sql = "INSERT INTO `users`(`username`, `email`, `password`, `admin`) VALUES ('".htmlentities($_POST["username"])."','".htmlentities($_POST["email"])."','".password_hash($_POST["pwd"], PASSWORD_DEFAULT)."',0)";
+
+    if ($_POST["admin"] == 0) {
+        $sql = "INSERT INTO `users`(`username`, `email`, `password`, `admin`) VALUES ('".htmlentities($_POST["username"])."','".htmlentities($_POST["email"])."','".password_hash($_POST["pwd"], PASSWORD_DEFAULT)."',0)";
+    } elseif ($_POST["admin"] == 1) {
+        $sql = "INSERT INTO `users`(`username`, `email`, `password`, `admin`) VALUES ('".htmlentities($_POST["username"])."','".htmlentities($_POST["email"])."','".password_hash($_POST["pwd"], PASSWORD_DEFAULT)."',1)";
+    }
+
 //    echo $sql;
     $conn->query($sql);
     die("{\"error\":0,\"message\":\"Success!\"}");

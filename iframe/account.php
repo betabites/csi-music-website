@@ -21,7 +21,7 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
         let selected_id
         let selected_element
         let user_edit_elements = {}
-        let new_user = false
+        let new_user = 0
 
         const delete_account = async (e) => {
             e.preventDefault()
@@ -45,8 +45,12 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
 
             // Send updated data to server
             let data = new FormData()
-            if (! new_user) {
+            if (new_user === 0) {
                 data.append("id", selected_id)
+            } else if (new_user === 1) {
+                data.append("admin", 0)
+            } else if (new_user === 2) {
+                data.append("admin", 1)
             }
             data.append("username", user_edit_elements.username.value)
             data.append("email", user_edit_elements.email.value)
@@ -65,7 +69,7 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
                     user_edit_elements.box.style.opacity = ""
                     user_edit_elements.box.style.pointerEvents = ""
 
-                    if (new_user) {
+                    if (new_user !== 0) {
                         window.location.reload()
                     }
                 } else {
@@ -81,14 +85,17 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
         const edit_account = async (id) => {
             let data = new FormData()
             data.append("id", id.toString())
-            if (id === "new") {
-                new_user = true
+
+            if (id === "new_admin") {
+                new_user = 2
+            } else if (id === "new") {
+                new_user = 1
             } else {
                 let user_data = await api.request("api/user_data.php", "post", data)
                 let user = JSON.parse(user_data)
                 selected_element = document.getElementById(id + "_user")
 
-                new_user = false
+                new_user = 0
 
                 selected_id = id
 
@@ -101,6 +108,7 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
             user_edit_elements.wrapper.style.height = "calc(100vh - 40px)"
             user_edit_elements.box.style.opacity = "1"
             user_edit_elements.box.style.pointerEvents = "auto"
+            return
         }
 
         const onload = () => {
@@ -174,6 +182,14 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
                     </div><?php
                 }
                 ?>
+                <div class="sideways_slider_item" id="new_user" onclick="edit_account('new_admin')">
+                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                        <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
+                    </div>
+                    <div class="playlist_title">
+                        + Add new user
+                    </div>
+                </div>
             </div>
         </div>
     </div>
