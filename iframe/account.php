@@ -27,7 +27,9 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
             e.preventDefault()
             let data = new FormData()
             data.append("id", selected_id)
-            let json = JSON.parse(await api.request("api/user_data.php?delete=1", "post", data))
+            let json_data = await api.request("api/user_data.php?delete=1", "post", data)
+            console.log(await api.request("api/user_data.php?delete=1", "post", data))
+            let json = JSON.parse(json_data)
 
             console.log(json)
             console.log("User removed")
@@ -138,61 +140,68 @@ $admin_users = $conn->query("SELECT * FROM `users` WHERE `admin` = 1");
 </div>
 
 <div class="wrapper">
-    <div class="sideways_slider_wrapper">
-        <h1>Users</h1>
-        <div class="sideways_slider">
-            <div class="sideways_slider_content">
-                <?php
-                foreach($normal_users as $user) {
-                    ?><div class="sideways_slider_item" id="<?php echo $user["user_id"];?>_user" onclick="edit_account(<?php echo $user["user_id"];?>)">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
-                        <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
-                    </div>
-                    <div class="playlist_title">
-                        <?php echo $user["username"]; ?>
-                    </div>
-                    </div><?php
-                }
-                ?>
+    <?php
+    if ($_SESSION["admin"] == "1") {
+        // Only show the following to admins
+        ?>
+        <div class="sideways_slider_wrapper">
+            <h1>Users</h1>
+            <div class="sideways_slider">
+                <div class="sideways_slider_content">
+                    <?php
+                    foreach($normal_users as $user) {
+                        ?><div class="sideways_slider_item" id="<?php echo $user["user_id"];?>_user" onclick="edit_account(<?php echo $user["user_id"];?>)">
+                        <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                            <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
+                        </div>
+                        <div class="playlist_title">
+                            <?php echo $user["username"]; ?>
+                        </div>
+                        </div><?php
+                    }
+                    ?>
 
-                <div class="sideways_slider_item" id="new_user" onclick="edit_account('new')">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
-                        <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
-                    </div>
-                    <div class="playlist_title">
-                        + Add new user
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="sideways_slider_wrapper">
-        <h1>Administrators</h1>
-        <div class="sideways_slider">
-            <div class="sideways_slider_content">
-                <?php
-                foreach($admin_users as $user) {
-                    ?><div class="sideways_slider_item" id="<?php echo $user["user_id"];?>_user" onclick="edit_account(<?php echo $user["user_id"];?>)">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
-                        <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
-                    </div>
-                    <div class="playlist_title">
-                        <?php echo $user["username"]; ?>
-                    </div>
-                    </div><?php
-                }
-                ?>
-                <div class="sideways_slider_item" id="new_user" onclick="edit_account('new_admin')">
-                    <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
-                        <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
-                    </div>
-                    <div class="playlist_title">
-                        + Add new user
+                    <div class="sideways_slider_item" id="new_user" onclick="edit_account('new')">
+                        <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                            <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
+                        </div>
+                        <div class="playlist_title">
+                            + Add new user
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="sideways_slider_wrapper">
+            <h1>Administrators</h1>
+            <div class="sideways_slider">
+                <div class="sideways_slider_content">
+                    <?php
+                    foreach($admin_users as $user) {
+                        ?><div class="sideways_slider_item" id="<?php echo $user["user_id"];?>_user" onclick="edit_account(<?php echo $user["user_id"];?>)">
+                        <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                            <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
+                        </div>
+                        <div class="playlist_title">
+                            <?php echo $user["username"]; ?>
+                        </div>
+                        </div><?php
+                    }
+                    ?>
+                    <div class="sideways_slider_item" id="new_user" onclick="edit_account('new_admin')">
+                        <div class="sideways_slider_icon" style="background-image: url('../assets/images/default_cover_small.jpg')">
+                            <img class="play_track_button play_animate" style="" src="../assets/fontawesome/svgs/regular/trash-alt.svg"/>
+                        </div>
+                        <div class="playlist_title">
+                            + Add new user
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
 </div>
 
 <div id="edit_user_wrapper">

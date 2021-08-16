@@ -72,8 +72,8 @@ if (! isset($_SESSION["user_id"])) {
 
                 <div class="seperator"></div>
 
-                <div class="small_menuitem">
-                    <i class="fas fa-eye" onclick="api.send_iframe_to_page('iframe/show_all.php')"></i>
+                <div class="small_menuitem" onclick="api.send_iframe_to_page('iframe/show_all.php')">
+                    <i class="fas fa-eye"></i>
                     Show all tracks
                 </div>
 
