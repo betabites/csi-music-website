@@ -41,7 +41,7 @@ ORDER BY `title` ASC";
         array_push($data, $result);
     }
 } elseif ($_GET["playlist_type"] == 2) {
-    // Get Albumns
+    // Get Albums
     $sql = "SELECT COUNT(`playlists`.`playlist_id`) AS 'count', SUM(`tracks`.`duration`) AS 'duration', `playlists`.* FROM `playlists`
 JOIN `track_to_playlist` ON `playlists`.`playlist_id` = `track_to_playlist`.`playlist_id`
 JOIN `tracks` ON `tracks`.`track_id` = `track_to_playlist`.`track_id`

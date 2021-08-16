@@ -22,6 +22,9 @@ if (! isset($_SESSION["user_id"])) {
     <body onload="onload()">
 
     <div id="wrapper">
+
+        <!-- This is the minature menu that always shows on the left of the screen -->
+
         <div id="small_menu" class="menu">
             <div class="small_menuitem" title="Show Menu" style="background-color: black; color: white;" onclick="document.getElementById('large_menu_frame').style.display = 'grid'">
                 <i class="fas fa-bars"></i>
@@ -46,6 +49,8 @@ if (! isset($_SESSION["user_id"])) {
                 <i class="fas fa-sign-out-alt"></i>
             </div>
         </div>
+
+        <!-- This is the expanded menu -->
 
         <div id="large_menu_frame">
             <div id="large_menu" class="menu">
@@ -94,10 +99,15 @@ if (! isset($_SESSION["user_id"])) {
 
         </iframe>
 
+        <!-- Below is the player element. This is controlled in ai.js -->
         <div id="player">
+
+            <!-- This is where the track name shows -->
             <div id="track_data">
                 No tracks loaded.
             </div>
+
+            <!-- This is the player controls. Such as play & skip. -->
             <div id="player_controls">
                 <div class="skip" id="skip_backwards">
                     <div class="skip_bar"></div>
@@ -110,6 +120,7 @@ if (! isset($_SESSION["user_id"])) {
                 </div>
             </div>
 
+            <!-- This is the player snake -->
             <div id="player_snake">
                 <div id="player_snake_slider">
                     <div id="slide_circle"></div>
