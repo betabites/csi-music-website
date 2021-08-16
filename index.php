@@ -72,8 +72,8 @@ if (! isset($_SESSION["user_id"])) {
 
                 <div class="seperator"></div>
 
-                <div class="small_menuitem">
-                    <i class="fas fa-eye" onclick="api.send_iframe_to_page('iframe/show_all.php')"></i>
+                <div class="small_menuitem" onclick="api.send_iframe_to_page('iframe/show_all.php')">
+                    <i class="fas fa-eye"></i>
                     Show all tracks
                 </div>
 
@@ -90,6 +90,8 @@ if (! isset($_SESSION["user_id"])) {
                     <i class="fas fa-sign-out-alt"></i>
                     Logout
                 </div>
+
+                <div id="copyright" style="line-height: 15pt;">&copy;Copyright 2021 - Jack Hawinkels - All Rights Reserved<br>Some icons have been sourced from Font Awesome, using the CC BY 4.0. More information can be found <a href="https://fontawesome.com/license/free" target="_blank">here</a>.</div>
             </div>
             <div id="large_menu_darkener" onclick="document.getElementById('large_menu_frame').style.display = 'none'">
             </div>

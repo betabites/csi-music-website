@@ -57,7 +57,7 @@ $tracks = $conn->query($get_tracks_sql);
                 <div class="playlist_item_icon" onclick="api.play_playlist(<?php echo $playlist["playlist_id"].",'".$playlist["title"]."',".$i;?>)">
                     <img class="play_track_button play_animate" src="../assets/icons/play.svg"/>
                 </div>
-                <?php echo $track["title"]; ?>
+                <?php echo $track["title"] . " - " . gmdate("i:s", (int) $track["duration"]) . " - " . $track["size"] . "KB"; ?>
             </div>
             <?php
         }
