@@ -34,6 +34,10 @@ if (! isset($_SESSION["user_id"])) {
                 <i class="fas fa-search"></i>
             </div>
             <div class="seperator"></div>
+            <div class="small_menuitem" title="Show all tracks" onclick="api.send_iframe_to_page('iframe/show_all.php')">
+                <i class="fas fa-eye"></i>
+            </div>
+            <div class="seperator"></div>
             <div class="small_menuitem" title="My Account - <?php echo $_SESSION["username"]; ?>" onclick="api.send_iframe_to_page('iframe/account.php')">
                 <i class="fas fa-user-circle"></i>
             </div>
@@ -56,9 +60,16 @@ if (! isset($_SESSION["user_id"])) {
 
                 <div class="seperator"></div>
 
+                <div class="small_menuitem" onclick="api.send_iframe_to_page('iframe/refined_search.php?refined_type=5')">
+                    <i class="fas fa-search"></i>
+                    Search
+                </div>
+
+                <div class="seperator"></div>
+
                 <div class="small_menuitem">
-                    <i class="fas fa-search" onclick="api.send_iframe_to_page('iframe/refined_search.php?refined_type=5')"></i>
-                    Show all
+                    <i class="fas fa-eye" onclick="api.send_iframe_to_page('iframe/show_all.php')"></i>
+                    Show all tracks
                 </div>
 
                 <div class="seperator"></div>
