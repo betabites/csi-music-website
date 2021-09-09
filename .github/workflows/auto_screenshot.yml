@@ -20,8 +20,8 @@ jobs:
 
     steps:
       - name: Screenshot Website
-      - uses: swinton/screenshot-website@v1.x
-      - with:
+        uses: swinton/screenshot-website@v1.x
+        with:
           source: https://projectspace.nz/yzfncybj/login.php
           destination: login.png
           full-page: true
