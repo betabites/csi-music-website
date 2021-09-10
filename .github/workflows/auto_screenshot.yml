@@ -6,7 +6,7 @@
 # This workflow will install Deno then run Deno lint and test.
 # For more information see: https://github.com/denoland/setup-deno
 
-name: Deno
+name: Take Screenshot
 
 on:
   push:
@@ -24,4 +24,46 @@ jobs:
         with:
           source: https://projectspace.nz/yzfncybj/login.php
           destination: login.png
+          full-page: true
+          
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+          source: https://projectspace.nz/yzfncybj/iframe/account.php
+          destination: account.png
+          full-page: true
+        
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+          source: https://projectspace.nz/yzfncybj/iframe/home.php
+          destination: home.png
+          full-page: true
+        
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+          source: https://projectspace.nz/yzfncybj/iframe/playlist.php?playlist_id=1
+          destination: playlist.png
+          full-page: true
+        
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+          source: https://projectspace.nz/yzfncybj/iframe/refined_search.php
+          destination: refined_search.png
+          full-page: true
+        
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+          source: https://projectspace.nz/yzfncybj/iframe/search.php
+          destination: search.png
+          full-page: true
+        
+      - name: Screenshot Website
+        uses: swinton/screenshot-website@v1.x
+        with:
+          source: https://projectspace.nz/yzfncybj/iframe/show_all.php
+          destination: show_all.png
           full-page: true
