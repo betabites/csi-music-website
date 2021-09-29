@@ -412,3 +412,9 @@ input {
         transform: rotate(360deg);
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .page_header_albumn_cover {
+        display: none;
+    }
+}
