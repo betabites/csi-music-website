@@ -42,9 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
 
+    <title>DOTTY - Graeme's Music</title>
     <!-- A lot of the CSS styling the login page doesn't share with the other pages,
     so the CSS of the login page has been placed inline below-->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Staatliches&display=swap');
+
         body {
             margin: 0;
             padding: 20px;
@@ -55,6 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             min-width: calc(100vw - 40px);
             min-height: calc(100vh - 40px);
             text-align: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Staatliches', cursive;
         }
 
         #login {
