@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 
     <title>DOTTY - Graeme's Music</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- A lot of the CSS styling the login page doesn't share with the other pages,
     so the CSS of the login page has been placed inline below-->
     <style>
