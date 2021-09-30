@@ -194,11 +194,11 @@ class outer_frame_class extends API {
     }
 
     skip_forwards() {
-        alert("Skipped forwards")
+        api.player.player_el.currentTime = api.player.player_el.duration
     }
 
     skip_backwards() {
-        alert("Skipped backwards")
+        api.player.player_el.currentTime = 0
     }
 
     toggle() {

@@ -111,14 +111,12 @@ if (! isset($_SESSION["user_id"])) {
 
             <!-- This is the player controls. Such as play & skip. -->
             <div id="player_controls">
-                <div class="skip" id="skip_backwards">
-                    <div class="skip_bar"></div>
-                    <div class="skip_triangle"></div>
+                <div class="skip" id="skip_backwards" onclick="api.skip_backwards()">
+                    <img src="assets/icons/skip_backward.svg" alt="skip backward">
                 </div>
                 <img src="assets/icons/icon.svg" height="30px" style="display: inline-block" id="toggle"/>
-                <div class="skip" id="skip_forwards" style="transform: rotate(180deg)">
-                    <div class="skip_bar"></div>
-                    <div class="skip_triangle"></div>
+                <div class="skip" id="skip_forwards" onclick="api.skip_forwards()"">
+                    <img src="assets/icons/skip_forward.svg" alt="skip forward">
                 </div>
             </div>
 
